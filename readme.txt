@@ -48,6 +48,11 @@ changed key-values in each accept() call.
 *** IMPORTANT ***
 Please change KeysAndValuesImpl.UNDO_HISTORY_SIZE to fit your testing data
 size.
+As the question doesn't mention whether there is a upper limit size of the
+Undo History, I presume it's better to have a max size to fit the real life
+usage. ArrayDeque by nature would grow in size as necessary to support usage.
+I suppress it from growing to mimic a ring buffer to implement a bounded
+Undo History.
 *** IMPORTANT ***
 
 The snapshot is first built with a temporary and reusable HashMap (reusing to
